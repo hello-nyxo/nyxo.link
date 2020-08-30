@@ -81,7 +81,7 @@ const Container = styled.div`
 
 export const query = graphql`
   {
-    allInstaNode {
+    allInstaNode(sort: { fields: timestamp, order: DESC }) {
       nodes {
         id
         likes

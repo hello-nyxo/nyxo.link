@@ -24,16 +24,8 @@ type Props = {
 const Post: FC<Props> = ({ post }) => {
   const { isLink, link } = hasLink(post.caption)
 
-  if (isLink) {
-    return (
-      <Container as="a" href={link}>
-        <PostImage fluid={post.localFile.childImageSharp.fluid} />
-      </Container>
-    )
-  }
-
   return (
-    <Container key={post.id}>
+    <Container {...(isLink && { a: "a", href: link })}>
       <PostImage fluid={post.localFile.childImageSharp.fluid} />
     </Container>
   )
